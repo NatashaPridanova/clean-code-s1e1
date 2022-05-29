@@ -26,7 +26,7 @@
   .header {
     text-align: center;
   }
-  
+
 }
 
 .main {
@@ -121,7 +121,7 @@
 
 /* Task list */
 
-.list__item {
+.list__item__content {
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
@@ -130,7 +130,7 @@
   align-items: center;
 }
 
-.list__item>* {
+.list__item_content {
   vertical-align: middle;
 }
 

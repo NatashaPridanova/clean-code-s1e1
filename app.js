@@ -18,6 +18,7 @@ var completedTasksHolder = document.querySelector(".list_completed"); //complete
 var createNewTaskElement = function(taskString) {
 
   var listItem = document.createElement("li");
+  listItem.classList.add('list__item');
 
   //input (checkbox)
   var checkBox = document.createElement("input"); //checkbx
@@ -34,17 +35,20 @@ var createNewTaskElement = function(taskString) {
 
   label.innerText = taskString;
   label.className = 'label_task';
+  checkBox.classList.add('label');
 
   //Each elements, needs appending
   checkBox.type = "checkbox";
   editInput.type = "text";
-  editInput.className = "input_task";
+  editInput.className = "input input_text item__input";
 
   editButton.innerText = "Edit"; //innerText encodes special characters, HTML does not.
-  editButton.className = "button_edit";
+  editButton.className = "button button_edit";
 
-  deleteButton.className = "button_delete";
+  deleteButton.className = "button button_delete";
   deleteButtonImg.src = './remove.svg';
+  deleteButtonImg.className = "button__img";
+
   deleteButton.appendChild(deleteButtonImg);
 
 
@@ -99,6 +103,8 @@ var editTask = function() {
   }
 
   //toggle .editmode on the parent.
+  label.classList.toggle('label_on-edit');
+  editInput.classList.toggle('input_text_on-edit');
   listItem.classList.toggle("list__item_on-edit");
 };
 

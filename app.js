@@ -19,7 +19,8 @@ var createNewTaskElement = function(taskString) {
 
   var listItem = document.createElement("li");
   listItem.classList.add('list__item');
-
+  var wrapper = document.createElement("div");
+  wrapper.className = "list__item__content";
   //input (checkbox)
   var checkBox = document.createElement("input"); //checkbx
   //label
@@ -34,8 +35,8 @@ var createNewTaskElement = function(taskString) {
   var deleteButtonImg = document.createElement("img"); //delete button image
 
   label.innerText = taskString;
-  label.className = 'label_task';
-  checkBox.classList.add('label');
+  label.className = 'label label_task';
+  checkBox.className = 'input input_checkbox';
 
   //Each elements, needs appending
   checkBox.type = "checkbox";
@@ -53,11 +54,12 @@ var createNewTaskElement = function(taskString) {
 
 
   //and appending.
-  listItem.appendChild(checkBox);
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
+  listItem.appendChild(wrapper);
+  wrapper.appendChild(checkBox);
+  wrapper.appendChild(label);
+  wrapper.appendChild(editInput);
+  wrapper.appendChild(editButton);
+  wrapper.appendChild(deleteButton);
   return listItem;
 }
 
@@ -83,8 +85,8 @@ var editTask = function() {
   console.log("Edit Task...");
   console.log("Change 'edit' to 'save'");
 
-
-  var listItem = this.parentNode;
+  var wrapper = this.parentNode;
+  var listItem = wrapper.parentNode;
 
   var editInput = listItem.querySelector('input[type=text]');
   var label = listItem.querySelector("label");
@@ -127,6 +129,8 @@ var taskCompleted = function() {
 
   //Append the task list item to the #completed-tasks
   var listItem = this.parentNode;
+  var label = listItem.querySelector("label");
+  label.classList.add('label_completed');
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 
@@ -139,6 +143,8 @@ var taskIncomplete = function() {
   //When the checkbox is unchecked
   //Append the task list item to the #incompleteTasks.
   var listItem = this.parentNode;
+  var label = listItem.querySelector("label");
+  label.classList.remove('label_completed');
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 }

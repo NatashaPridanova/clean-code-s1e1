@@ -128,7 +128,7 @@
   align-items: center;
 }
 
-.list__item_content {
+.list__content {
   vertical-align: middle;
 }
 
@@ -172,7 +172,7 @@
   display: none;
 }
 
-.input_text.input_text_on-edit {
+.input_text.text_on-edit {
   display: inline-block;
   width: 224px;
 }
